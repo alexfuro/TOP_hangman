@@ -1,22 +1,17 @@
-<html>
-  <head></head>
-  <body>
-    <h1> Hello there: <%= name %>!</h1>
-    <p>I'm thinking of a word that's <%= secret_word.length %> long:</p>
-    <p><%= game_board.join %></p>
-    <p>Your guesses were</p>
-    <p><%= guesses.join(" ") %></p><br>
-    <p>you have made: <%= misses - 1 %> misses</p>
-    <form>
-      What is your guess?: <input type="text" name="guess" />
-      <input type="submit" value="Guess!" />
-    </form>
-    <% if misses <= 8 && winner %>
-      <h2>You won!</h2>
-    <% elsif misses > 8 && !winner %>
-      <h2>You lose!</h2>
-      <p>The word was <%= secret_word %> all along</p>
-    <% end %>
-    <a href="/">New game</a>
-  </body>
-</html>
+<h1> Hello there: <%= name %>!</h1>
+<p>I'm thinking of a word that's <%= secret_word.length %> long:</p>
+<p><%= game_board.join %></p>
+<p>Your guesses were</p>
+<p><%= guesses.join(" ") %></p><br>
+<p>you have made: <%= misses - 1 %> misses</p>
+<form>
+  What is your guess?: <input type="text" name="guess" />
+  <input type="submit" value="Guess!" />
+</form>
+<% if misses <= 8 && winner %>
+  <h2>You won!</h2>
+<% elsif misses > 8 && !winner %>
+  <h2>You lose!</h2>
+  <p>The word was <%= secret_word %> all along</p>
+<% end %>
+<a href="/">New game</a>
