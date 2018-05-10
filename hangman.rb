@@ -66,5 +66,10 @@ get '/' do
 end
 
 get '/play' do
-  erb :play
+  game = session[:game]
+  player = game.player
+  guess = params["guess"]
+  player.user_guess(guess)
+
+  erb :play, :locals => {:guesses => player.guesses}
 end
