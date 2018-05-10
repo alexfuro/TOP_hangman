@@ -49,3 +49,11 @@ class Hangman
     end
   end
 end
+
+#sinatra code
+get '/' do
+  player_name = params["name"]
+  player = Player.new(player_name)
+  
+  erb :index
+end
