@@ -51,6 +51,7 @@ class Hangman
 end
 
 #sinatra code
+enable :sessions
 get '/' do
   player_name = params["name"]
   player = Player.new(player_name)
