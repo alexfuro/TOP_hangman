@@ -54,6 +54,14 @@ end
 get '/' do
   player_name = params["name"]
   player = Player.new(player_name)
-  
+
+  if !player_name.nil?
+    redirect '/play'
+  end
+
   erb :index
+end
+
+get '/play' do
+  "We have arrived at the play page!"
 end
