@@ -11,5 +11,12 @@
       What is your guess?: <input type="text" name="guess" />
       <input type="submit" value="Guess!" />
     </form>
+    <% if misses <= 8 && winner %>
+      <h2>You won!</h2>
+    <% elsif misses > 8 && !winner %>
+      <h2>You lose!</h2>
+      <p>The word was <%= secret_word %> all along</p>
+    <% end %>
+    <a href="/">New game</a>
   </body>
 </html>
