@@ -66,10 +66,30 @@ get '/' do
 end
 
 get '/play' do
+  match = false
+  gameover = false
+  winner = false
+
   game = session[:game]
   player = game.player
   guess = params["guess"]
   player.user_guess(guess)
 
-  erb :play, :locals => {:guesses => player.guesses}
+  match = game.check_matches
+  if !match
+    game.misses += 1
+  end
+  gameover = game.gameover()
+  if gameover && !game.board.include?("_")
+    winner = true
+  end
+  if game.misses > 9
+    player.guesses = []
+    session[:game] = Hangman.new(player)
+    redirect '/play'
+  end
+
+  erb :play, :locals => {:game_board => game.board, :name => player.name,
+     :guesses => player.guesses, :misses => game.misses,
+     :secret_word => game.secret_word, :winner =>  winner}
 end
