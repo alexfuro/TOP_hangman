@@ -55,7 +55,9 @@ enable :sessions
 get '/' do
   player_name = params["name"]
   player = Player.new(player_name)
-
+  game = Hangman.new(player)
+  session[:name] = player_name
+  session[:game] = game
   if !player_name.nil?
     redirect '/play'
   end
@@ -64,5 +66,5 @@ get '/' do
 end
 
 get '/play' do
-  "We have arrived at the play page!"
+  "We have arrived at the play page #{session[:name]}!"
 end
