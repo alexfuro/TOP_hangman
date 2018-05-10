@@ -66,5 +66,5 @@ get '/' do
 end
 
 get '/play' do
-  "We have arrived at the play page #{session[:name]}!"
+  erb :play
 end
