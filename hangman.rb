@@ -19,17 +19,6 @@ class Hangman
     @secret_word = secret_words[rand(secret_words.length)].strip.downcase
   end
 
-  def play()
-
-  end
-
-  def display()
-    @board.each do |letter|
-     print letter
-    end
-    puts
-  end
-
   def check_matches()
     match = false
     @secret_word.split("").each_with_index do |letter, index|
